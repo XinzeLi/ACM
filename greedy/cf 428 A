@@ -1,0 +1,44 @@
+#pragma comment(linker, "/STACK:1024000000,1024000000")
+#include<iostream>
+#include<math.h>
+#include<string.h>
+#include<queue>
+#include<algorithm>
+#include<cstdio>
+#define rep(i,a,n) for(i=a;i<=n;i++)
+#define rp(i,a,n) for(i=a;i<n;i++)
+#define per(i,a,n) for(i=n;i>=a;i--)
+#define scd1(a) scanf("%d",&a)
+#define scd2(a,b) scanf("%d%d",&a,&b)
+#define scd3(a,b,c) scanf("%d%d%d",&a,&b,&c)
+#define scd4(a,b,c,d) scanf("%d%d%d%d",&a,&b,&c,&d)
+#define ll long long
+#define mem(a,b) memset(a,b,sizeof a)
+using namespace std;
+
+const int maxn=100;
+int n,k,s[maxn+5];
+
+int main(){
+	scd2(n,k);
+	int i;
+	rep(i,1,n){
+		scd1(s[i]);
+	}
+	int sum=0;bool flag=0;
+	rep(i,1,n){
+		if(sum+s[i]>8){
+			sum+=(s[i]-8);k-=8;
+		}else{
+			k-=(sum+s[i]);sum=0;
+		}
+		if(k<=0){
+			flag=1;break;
+		}
+	}
+	if(flag){
+		printf("%d\n",i);
+	}else{
+		printf("-1\n");
+	}
+}
